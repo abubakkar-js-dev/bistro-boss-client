@@ -8,6 +8,7 @@ import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Carts from "../pages/Carts/Carts";
+import PrivateRoute from "./PrivateRoute";
 
 
   export const router = createBrowserRouter([
@@ -37,7 +38,7 @@ import Carts from "../pages/Carts/Carts";
         },
         {
           path: 'carts',
-          element: <Carts />,
+          element: <PrivateRoute><Carts /></PrivateRoute>,
         }
       ]
     },
