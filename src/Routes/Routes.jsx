@@ -7,6 +7,7 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Carts from "../pages/Carts/Carts";
 
 
   export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ import Register from "../pages/Register/Register";
         {
           path: 'register',
           element: <Register />
+        },
+        {
+          path: 'carts',
+          element: <Carts />,
         }
       ]
     },

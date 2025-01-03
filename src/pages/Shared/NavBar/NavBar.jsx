@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 import { useContext } from "react";
+import { MdShoppingCart } from "react-icons/md";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user,"From NavBar");
-
+  console.log(user, "From NavBar");
 
   const handleLogOut = () => {
-    logOut().then(()=>{
+    logOut()
+      .then(() => {
         console.log("Logged Out");
-    }).catch((error)=>{
+      })
+      .catch((error) => {
         console.log(error);
-    });
+      });
   };
 
   const navOptions = (
@@ -26,9 +28,15 @@ const NavBar = () => {
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
-
       <li>
-        <a>Item 3</a>
+        <Link to="/carts">
+          <div className="relative">
+            <MdShoppingCart className="text-2xl" />
+            <div className="badge badge-secondary badge-xs absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+              0
+            </div>
+          </div>
+        </Link>
       </li>
 
       {user && user.email ? (
@@ -37,8 +45,8 @@ const NavBar = () => {
         </li>
       ) : (
         <li>
-        <Link to="/login">Login</Link>
-      </li>
+          <Link to="/login">Login</Link>
+        </li>
       )}
     </>
   );
