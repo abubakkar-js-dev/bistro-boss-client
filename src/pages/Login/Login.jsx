@@ -1,12 +1,15 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from "react-simple-captcha";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { loginUser,setUser } = useContext(AuthContext);
     const [isCaptchaValid, setIsCaptchaValid] = useState(false);
     const captchaInputRef = useRef(null); // Reference for the captcha input field
+    const location = useLocation(); 
+    const {from} = location.state || '/';
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadCaptchaEnginge(6); // Load the captcha with 6 characters
@@ -24,6 +27,8 @@ const Login = () => {
             loginUser(email,password).then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user);
+                navigate(from);
+
             }).catch((error) => {
                 const errorCode = error.code;
                 alert(errorCode);

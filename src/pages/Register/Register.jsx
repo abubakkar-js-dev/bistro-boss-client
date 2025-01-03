@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import Swal from "sweetalert2";
 
 const Register = () => {
     const { createUser, setUser,updateUser } = useContext(AuthContext);
     const {register,handleSubmit,reset,formState: {errors}} = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const {from} = location.state || '/';
 
     const onSubmit = (data) => {
        console.log(data);
@@ -28,6 +31,7 @@ const Register = () => {
                 });
                 setUser(user);
                 reset();
+                navigate(from);
             })
             .catch((error) => {
                 alert(error.code);
