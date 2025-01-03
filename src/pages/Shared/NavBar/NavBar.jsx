@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 import { useContext } from "react";
 import { MdShoppingCart } from "react-icons/md";
+import useCarts from "../../../hooks/useCarts";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const {carts} = useCarts();
   console.log(user, "From NavBar");
 
   const handleLogOut = () => {
@@ -33,7 +35,7 @@ const NavBar = () => {
           <div className="relative">
             <MdShoppingCart className="text-2xl" />
             <div className="badge badge-secondary badge-xs absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
-              0
+              {carts?.length}
             </div>
           </div>
         </Link>
