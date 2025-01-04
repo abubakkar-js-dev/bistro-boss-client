@@ -36,10 +36,18 @@ import PrivateRoute from "./PrivateRoute";
           path: 'register',
           element: <Register />
         },
-        {
-          path: 'carts',
-          element: <PrivateRoute><Carts /></PrivateRoute>,
-        }
       ]
     },
+    {
+      path: "/dashboard",
+      children: [
+        {
+          path: "carts",
+          element: <PrivateRoute><Carts /></PrivateRoute>,
+        },
+        {
+          
+        }
+      ]
+    }
   ]);

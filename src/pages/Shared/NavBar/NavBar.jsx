@@ -31,7 +31,7 @@ const NavBar = () => {
         <Link to="/order/salad">Order Food</Link>
       </li>
       <li>
-        <Link to="/carts">
+        <Link to="/dashboard/carts">
           <div className="relative">
             <MdShoppingCart className="text-2xl" />
             <div className="badge badge-secondary badge-xs absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
