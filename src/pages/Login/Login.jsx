@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from "react-simple-captcha";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { loginUser,setUser } = useContext(AuthContext);
@@ -122,6 +123,7 @@ const Login = () => {
                             </p>
                         </div>
                     </form>
+                    <SocialLogin />
                 </div>
             </div>
         </div>

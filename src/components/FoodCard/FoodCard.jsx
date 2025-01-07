@@ -18,6 +18,7 @@ const FoodCard = ({item}) => {
           const newCart = {
             menu_id:_id,
             image,
+            name,
             price,
             recipe,
             customer_email:user.email,

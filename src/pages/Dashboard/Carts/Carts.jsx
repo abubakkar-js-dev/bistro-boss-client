@@ -8,6 +8,7 @@ const Cart = () => {
     const {carts,refetch}= useCarts();
     const totalPrice = carts.reduce((total, item) => total + item.price, 0);
     const axiosSecure = useAxiosSecure();
+    console.log(carts);
 
     const handleDelete = id => {
         Swal.fire({
