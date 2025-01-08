@@ -2,20 +2,45 @@ import { FaPen, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../../components/Loading/Loading";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-  const [menu, loading] = useMenu();
+  const axiosSecure = useAxiosSecure();
+  const [menu, loading, refetch] = useMenu();
   console.log(menu, "menu from manage items");
   if (loading) {
     return <Loading></Loading>;
   }
-  
+
   const handleDeleteItem = (item) => {
-    console.log(item._id,"item from manage items");
+    console.log(item._id, "item from manage items");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/menu/${item._id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
-  }
-
-  
   return (
     <div>
       <SectionTitle
@@ -56,12 +81,14 @@ const ManageItems = () => {
                 <td>{item.name}</td>
                 <td>{item.price}</td>
                 <td>
-                <button
-                //   onClick={() => handleUpdateItem(item)}
-                  className="btn !h-5 outline-none border-none bg-orange-300 "
-                >
-                  <FaPen className="text-white text-xs" />
-                </button>
+                  <Link to={`/dashboard/update-item/${item._id}`}>
+                    <button
+                      //   onClick={() => handleUpdateItem(item)}
+                      className="btn !h-5 outline-none border-none bg-orange-300 "
+                    >
+                      <FaPen className="text-white text-xs" />
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button

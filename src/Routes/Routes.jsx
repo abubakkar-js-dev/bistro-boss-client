@@ -7,7 +7,6 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import Carts from "../pages/Dashboard/Carts/Carts";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/DashboardLayout";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
@@ -15,6 +14,7 @@ import Cart from "../pages/Dashboard/Carts/Carts";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import AdminRoutes from "./AdminRoutes";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
 
 
   export const router = createBrowserRouter([
@@ -65,6 +65,10 @@ import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
         {
           path: 'manage-items',
           element: <AdminRoutes><ManageItems /></AdminRoutes>
+        },
+        {
+          path: 'update-item/:id',
+          element: <AdminRoutes><UpdateItem /></AdminRoutes>
         }
       ]
     }
