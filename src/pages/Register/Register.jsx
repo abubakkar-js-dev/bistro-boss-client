@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import AuthContext from "../../context/AuthContext/AuthContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import AuthContext from "../../context/AuthContext/AuthContext";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {

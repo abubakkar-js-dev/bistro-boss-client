@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef, useContext } from "react";
-import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from "react-simple-captcha";
-import AuthContext from "../../context/AuthContext/AuthContext";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { LoadCanvasTemplateNoReload, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Login = () => {
     const { loginUser,setUser } = useContext(AuthContext);
