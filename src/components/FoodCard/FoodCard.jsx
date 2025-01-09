@@ -19,7 +19,7 @@ const FoodCard = ({item}) => {
             menu_id:_id,
             image,
             name,
-            price,
+            price:parseFloat(price),
             recipe,
             customer_email:user.email,
             customer_name:user.displayName,

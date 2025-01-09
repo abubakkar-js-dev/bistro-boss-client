@@ -110,7 +110,7 @@ const Dashboard = () => {
               </li>
               <li className="hover:bg-black hover:text-white px-8 py-2 rounded-lg">
                 <NavLink
-                  to="/payment-history"
+                  to="/dashboard/payment-history"
                   className="flex items-center space-x-4 uppercase"
                 >
                   <FaMoneyBill className="text-2xl" />
@@ -123,7 +123,7 @@ const Dashboard = () => {
                   className="flex items-center space-x-4 uppercase"
                 >
                   <FaCartShopping className="text-2xl" />
-                  <span className="text-base ">My carts</span>
+                  <span className="text-base ">My carts ({cartItems.length})</span>
                 </NavLink>
               </li>
               <li className="hover:bg-black hover:text-white px-8 py-2 rounded-lg">
