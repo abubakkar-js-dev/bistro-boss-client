@@ -5,13 +5,14 @@ import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
     // todo: add publishable key
-    const stripePromise = loadStripe("");
+    const stripePublishableKey = import.meta.env.VITE_stripePublishableKey;
+    const stripePromise = loadStripe(stripePublishableKey);
     return (
         <div>
             <SectionTitle heading="Payment" subHeading="Please pay for your order" />
             <div className="flex justify-center items-center">
             
-            <div className="w-96 h-96 bg-gray-200 rounded-lg">
+            <div className="w-full bg-gray-200 rounded-lg p-16">
                 <Elements stripe = {stripePromise}>
                     <CheckoutForm />
                 </Elements>
