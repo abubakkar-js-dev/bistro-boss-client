@@ -3,11 +3,12 @@ import AuthContext from "../../../context/AuthContext/AuthContext";
 import { useContext } from "react";
 import { MdShoppingCart } from "react-icons/md";
 import useCarts from "../../../hooks/useCarts";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const {carts} = useCarts();
-  console.log(user, "From NavBar");
+  const { carts } = useCarts();
+  const {isAdmin} = useAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -30,6 +31,18 @@ const NavBar = () => {
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
+
+      {user && isAdmin && (
+        <li>
+          <Link to="/dashboard/admin-home">Admin Home</Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <Link to="/dashboard/user-home">User Home</Link>
+        </li>
+      )}
+
       <li>
         <Link to="/dashboard/carts">
           <div className="relative">

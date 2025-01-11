@@ -28,7 +28,7 @@ const Login = () => {
             loginUser(email,password).then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user);
-                navigate(from);
+                navigate(from || "/");
 
             }).catch((error) => {
                 const errorCode = error.code;

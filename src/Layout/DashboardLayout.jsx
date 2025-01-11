@@ -92,7 +92,7 @@ const Dashboard = () => {
             <>
               <li className="hover:bg-black hover:text-white px-8 py-2 rounded-lg">
                 <NavLink
-                  to="/carts"
+                  to="/dashboard/user-home"
                   className="flex items-center space-x-4 uppercase"
                 >
                   <FaHome className="text-2xl" />
