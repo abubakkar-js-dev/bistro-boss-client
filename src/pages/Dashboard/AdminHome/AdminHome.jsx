@@ -6,7 +6,7 @@ import { FaMoneyBill } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import Loading from "../../../components/Loading/Loading";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 
 
 // color for grap chart
@@ -59,7 +59,7 @@ const AdminHome = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   const RADIAN = Math.PI / 180;
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -88,7 +88,7 @@ const AdminHome = () => {
           <div className="stat-figure text-secondary">
             <FaMoneyBill className="text-4xl" />
           </div>
-          <div className="stat-value">{revenue.toFixed(2)}</div>
+          <div className="stat-value">{revenue.toFixed(2) || 0}</div>
           <div className="stat-title">Revenue</div>
         </div>
 
